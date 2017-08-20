@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>user list</title>
+    <link rel="stylesheet" href="../../static/lib/css/bootstrap.min.css" th:href="@{/lib/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" href="../../static/lib/css/common.css" th:href="@{/lib/css/common.css}"/>
+    <link rel="stylesheet" href="../../static/lib/css/validate.css" th:href="@{/lib/css/validate.css}"/>
+    <script src="../../static/lib/js/jquery.1.11.1.min.js" th:src="@{/lib/js/jquery.1.11.1.min.js}"></script>
+    <script src="../../static/lib/js/utils.js" th:src="@{/lib/js/utils.js}"></script>
+    <script src="../../static/lib/js/bootstrap.min.js" th:src="@{/lib/js/bootstrap.min.js}"></script>
+    <script src="../../static/lib/js/common.js" th:src="@{/lib/js/common.js}"></script>
+    <script src="../../static/lib/layer/layer.js" th:src="@{/lib/layer/layer.js}"></script>
+    <script th:src="@{/lib/layPage/laypage.js}"></script>
+    <script th:src="@{/lib/js/jquery.validate.js}"></script>
+</head>
+<body>
+    <table id="dataTable" class="table table-bordered">
+
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>姓名</th>
+            <th>密码</th>
+        </tr>
+        </thead>
+
+        <tbody th:remove="all-but-first" th:unless="${#lists.isEmpty(users)}">
+        <tr th:each="obj, objStat: ${users}">
+            <td th:text="${obj.id}"></td>
+            <td th:text="${obj.username}"></td>
+            <td th:text="${obj.password}"></td>
+            </td>
+        </tr>
+        </tbody>
+        <tbody th:if="${#lists.isEmpty(users)}">
+        <tr>
+            <td colspan="12">没有符合查询条件的记录！</td>
+        </tr>
+        </tbody>
+    </table>
+</body>
+</html>
+
